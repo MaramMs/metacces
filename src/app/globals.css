@@ -17,11 +17,19 @@
 }
 body{
   position: relative;
+  overflow: hidden;
+  background: url('/images/bg-layout.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 .image-container-center{
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 56%;
   transform: translate(-50%,-50%);
 }
 .image-container-center img{
@@ -42,19 +50,19 @@ body{
 .image-container:nth-child(2){
   position: absolute;
   right: 42%;
-  top: 1%;
+  top: 7%;
 
 }
 .image-container:nth-child(3){
   position: absolute;
   right: 30%;
-  top: 53%;
+  top: 61%;
  
 }
 .image-container:nth-child(4){
   position: absolute;
   left: 29%;
-  top: 53%;
+  top: 61%;
 }
 
 .glow-image:hover {
@@ -70,12 +78,78 @@ body{
 .home-img-container
 {
   position: absolute;
-  bottom: 7%;
+  bottom: 0%;
   left: 47%;
   transition: transform 0.3s ease-in-out, 
 }
 
 .home-img-container:hover{
-  transform: translate(20px, 20px) scale(1.1);
+  transform:scale(1.1);
 
 }
+
+.ant-select-disabled:where(.css-dev-only-do-not-override-17a39f8).ant-select:not(.ant-select-customize-input) .ant-select-selector{
+  color:#CAC9D5 !important
+}
+
+.gradient-border-wrapper {
+  padding: 1px;
+  background: linear-gradient(45deg, #07061A,#035A91,#0098E9,#A62FB2, #CF15A5);
+  border-radius: 36px;
+  margin: auto;
+
+}
+
+.gradient-border-inner {
+  background: #000;
+  opacity: 90%;
+  border-radius: 36px;
+  width: 1322px;
+  height: 619px;
+
+}
+
+/* .gradient-border-wrapper {
+  padding: 1px;
+  background-image: linear-gradient(45deg, #07061A,#035A91,#0098E9,#A62FB2, #CF15A5) 1;
+  border-radius: 36px;
+  margin: auto;
+  background: transparent;
+}
+
+.gradient-border-inner {
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 36px;
+  width: 1322px;
+  height: 619px;
+} */
+/* .gradient-border-wrapper {
+  position: relative;
+  display: inline-block; /* Adjust as needed 
+  padding: 2px; /* Adjust the padding to control the width of the border 
+  border-radius: 36px;
+  margin: auto;
+}
+
+.gradient-border-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+background-image: linear-gradient(45deg, #07061A, #035A91, #0098E9, #A62FB2, #CF15A5);
+  border-radius: inherit;
+  z-index: -1;
+  
+}
+
+.gradient-border-inner {
+  /* background-color: rgba(0, 0, 0, 0.9); 
+  border-radius: 36px;
+  width: 1322px;
+  height: 619px;
+} */
+
+
+

@@ -1,0 +1,33 @@
+.bgWrapper
+{
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+    backdrop-filter: blur(50px);
+}
+.container{
+    min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+padding: 16px;
+}
+
+.gradientBorderWrapper {
+    padding: 1px;
+    background: linear-gradient(45deg, #07061A,#035A91,#0098E9,#A62FB2, #CF15A5);
+    border-radius: 36px;
+    margin: auto;
+  
+  }
+  
+  .gradientBorderInner {
+    background: #000;
+    opacity: 90%;
+    border-radius: 36px;
+    width: 1322px;
+    height: 619px;
+    padding: 29px 86px;
+  
+  }
+  

@@ -1,0 +1,38 @@
+.navList{
+    display: flex;
+    gap: 12.2px;
+  
+}
+
+.navList li {
+    position: relative;
+}
+.menuNav{
+    display: none;
+    position: absolute;
+    top: -150%;
+    left: 10%;
+    height: 194.96;
+    width: 132.96;
+    padding-left: 15px;
+}
+/* .menuList{
+ 
+} */
+.menuList li {
+    color: #E4E4E4;
+    opacity: 65%;
+    font-size: 14px;
+    width: 118px;
+    height: 30px;
+}
+li:hover .menuNav{
+display: block;
+}
+.navName
+{
+    color: #CAC9D5;
+    font-size: 14px;
+    position: absolute;
+    bottom: -86%;
+}

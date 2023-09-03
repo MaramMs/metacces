@@ -7,7 +7,7 @@ import { Button } from "antd";
 import AddContent from "./AddContent";
 
 const MainLayout = () => {
-  const [addPage,setAddPage] = useState(true)
+  const [addPage,setAddPage] = useState(false)
   const handleAddPage =() =>{
     setAddPage(!addPage)
   }

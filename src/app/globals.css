@@ -17,7 +17,7 @@
 }
 body{
   position: relative;
-  overflow: hidden;
+  /* overflow-x: hidden; */
   background: url('/images/bg-layout.svg');
   background-repeat: no-repeat;
   background-position: center;

@@ -5,11 +5,22 @@ import { Button,Radio } from 'antd'
 import styles from '../styles/components/footer.module.css'
 import AddIcon from './AddIcon'
 const Footer = () => {
-  const [showAddIcon, setShowAddIcon]= useState(false)
-  const handleAddIcon =() =>{
-    setShowAddIcon(!showAddIcon)
-  
+const [IconsLeft , setIconsLeft] = useState([]);
+const [IconsRight, setIconsRight] = useState([])
+  const [showAddIcon, setShowAddIcon] = useState(false);
+
+  const addIcon = (iconData) =>{
+    console.log(iconData , 'icon data');
+    if (iconData.position === 'left') {
+      console.log(iconData.iconPosition,'iconData.iconPosition');
+      setIconsLeft([iconData, ...IconsLeft]); // Add item before the icon
+    } else {
+      setIconsRight([...IconsRight, iconData]); // Add item after the icon
+    }
   }
+  const handleAddIcon = () => {
+    setShowAddIcon(!showAddIcon);
+  };
   return (
     <div className='flex justify-between items-center'>
 
@@ -18,21 +29,42 @@ const Footer = () => {
       
       </Link>
      
-     <div className='flex items-center' style={{gap:'32.2px'}}>
-     <Button className={styles.btnAddIcon} onClick={handleAddIcon}>
-<img src='/images/plus.svg'/>
+     <div className={styles.navBarBottom}>
+ 
+     <div>
+      <Button className={styles.btnAddIcon} onClick={handleAddIcon}>
+        <img src='/images/plus.svg' alt="Add Icon" />
+      </Button>
+      {showAddIcon && <AddIcon addIcon={addIcon}/>}
+    </div>
 
 
-{
-      showAddIcon && <AddIcon />
-    
-    }
-</Button>
-     <NavBar type='right' />
+{/* <div> */}
+<NavBar IconsLeft={IconsLeft}/>
      <Link href='/'>
 <img src="/images/oli home buttomn.png" alt="" />
 </Link>
-<NavBar type='left'/>
+<NavBar IconsRight={IconsRight}/>
+{/* </div> */}
+
+
+
+    <div
+          className={styles.iconContainer}
+          style={{
+            background: 'rgb(112 112 112 / 34%)',
+            width: '62.61px',
+            height: '62.61px',
+            opacity: '100%',
+            borderRadius: '50%', // Use 50% for a perfect circle
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            border: '1px solid #707070',
+          }}
+        >
+          <img src='/images/nav5.svg' alt="" />
+        </div> 
 
 
 

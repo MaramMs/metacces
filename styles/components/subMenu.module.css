@@ -36,3 +36,15 @@ display: block;
     position: absolute;
     bottom: -86%;
 }
+
+/* Style for icons on the left */
+.icon.left {
+    float: left; /* Float the icons to the left */
+    margin-right: 10px; /* Add some spacing between icons on the left */
+  }
+  
+  /* Style for icons on the right */
+  .icon.right {
+    float: right; /* Float the icons to the right */
+    margin-left: 10px; /* Add some spacing between icons on the right */
+  }

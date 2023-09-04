@@ -1,13 +1,55 @@
-import { Button, Input, Radio } from 'antd'
+import { Button, Input, Radio, Upload } from 'antd'
 import React, { useState } from 'react'
 import styles from '../styles/components/footer.module.css'
-const AddIcon = () => {
+import UploadIcon from './UploadIcon';
+import axios from 'axios';
+const AddIcon = ({addIcon}) => {
   const [value, setValue] = useState();
-  const onChange = (e) => {
-    // e.preventDefault()
-    // console.log('radio checked', e.target.value);
-    // setValue(e.target.value);
+  const [nameIcon,setNameIcon] = useState('');
+  const [image, setImage] = useState();
+
+  const handleImageUpload = (file) => {
+    setImage(file);
+    return false; // return false so fileList is not updated
   };
+
+  const onChange = (e) => {
+    console.log('radio checked', e.target.value);
+    setValue(e.target.value);
+  };
+  const handelNameIcon = (e) => {
+    setNameIcon(e.target.value)
+  }
+
+  // const handleImageUpload = (file) => {
+  //   // Handle image upload here, e.g., set the 'image' state
+  //   setImage(file);
+  // };
+const handelAddIcon =async () =>{
+  const iconPosition = value === 1 ? 'right' : 'left';
+
+  const iconData = {
+    position: iconPosition, // Set the position based on the user's choice
+
+    name: nameIcon,
+    value: value,
+    image: URL.createObjectURL(image.file)
+  };
+
+  console.log(iconData , 'icon data');
+
+  addIcon(iconData)
+  // try {
+  //   const res = await axios.post('',{
+  //     icon: nameIcon,
+  //     value
+  //   })
+  // } catch (error) {
+    
+  // }
+}
+
+console.log(image , 'image');
   return (
     <div className={styles.addIcon}>
   
@@ -15,7 +57,7 @@ const AddIcon = () => {
    <label className={styles.labelInput}>
     Name
     </label> 
-    <Input className={styles.nameInput}/>
+    <Input className={styles.nameInput} onChange={(e) => handelNameIcon(e)}/>
 </div>
 
 <Radio.Group onChange={onChange} value={value}>
@@ -27,8 +69,25 @@ const AddIcon = () => {
 <div className={styles.icon}>
   <label>Icon</label>
   <div className={styles.btnsIcon}>
-<Button className={styles.btnLoad}>Download</Button>
-<Button className={styles.btnSave}>Save</Button>
+    {/* <UploadIcon /> */}
+    <Upload
+        customRequest={handleImageUpload}
+        showUploadList={false}
+        beforeUpload={(file) => {
+          // Add validation for image file type and size here
+          if (!['image/jpeg', 'image/png','image/svg+xml'].includes(file.type)) {
+            message.error('Only JPG/PNG files are allowed');
+            return false;
+          }
+          return true;
+        }}
+      >
+        <Button className={styles.btnLoad}>Upload</Button>
+      </Upload>
+
+
+
+<Button className={styles.btnSave} onClick={handelAddIcon}>Save</Button>
   </div>
   <p className={styles.size}>Size= <span>45*45</span></p>
 

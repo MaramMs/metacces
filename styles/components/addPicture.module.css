@@ -28,12 +28,12 @@
 .text {
   border-radius: 20px;
   border: 1px solid #707070;
-  padding: 33px 12px 28px 49px;
+  padding:7px 50px;
 }
 
 .text textarea {
   background: transparent !important;
-  border: none;
+  border: none !important;
   min-height: 100%;
 }
 
@@ -55,6 +55,6 @@
         height: 334px;
     }
   .text{
-    height: 126px;
+    padding: 33px 12px 28px 49px;
   }
   }

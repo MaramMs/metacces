@@ -142,3 +142,9 @@ border: 1px solid #707070;
     background: none;
     border: none;
   }
+
+
+  :where(.css-dev-only-do-not-override-17a39f8).ant-upload-wrapper .ant-upload-list .ant-upload-list-item-container{
+    position: absolute;
+    width: 160px;
+  }

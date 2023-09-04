@@ -10,8 +10,8 @@
 }
 .addIcon{
     position: absolute;
-    bottom: 120%;
-    left: -100%;
+    bottom: 15%;
+    left: 20%;
     background: #fff;
     width: 215px;
     height: 268px;
@@ -67,3 +67,10 @@ color: #28AEE0;
 }
 
 
+.navBarBottom{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    padding: 0px 130px;
+    align-items: center;
+}

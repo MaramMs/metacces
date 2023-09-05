@@ -133,11 +133,13 @@ border: 1px solid #707070;
   :where(.css-dev-only-do-not-override-17a39f8).ant-radio-wrapper .ant-radio-inner{
     border:1px solid #D628E0;
   }
-
+  
   :where(.css-dev-only-do-not-override-17a39f8).ant-upload-wrapper.ant-upload-picture-card-wrapper{
   width: auto !important;
   }
-
+  :where(.css-17a39f8).ant-upload-wrapper.ant-upload-picture-card-wrapper{
+    width: auto !important;
+  }
   :where(.css-dev-only-do-not-override-17a39f8).ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select, :where(.css-dev-only-do-not-override-17a39f8).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select{
     background: none;
     border: none;

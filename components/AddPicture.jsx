@@ -1,16 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/components/addPicture.module.css'
-import { Col, Row,Input, Upload} from 'antd'
+import { Col, Row,Input, Upload, Button} from 'antd'
+import axios from 'axios';
 const { TextArea } = Input;
 
-const AddPicture = () => {
-  const uploadButton = (
- 
-      <div className={styles.addImg}>
-        <img src='/images/plusImg.svg'/>
-      </div>
-  
-  );
+const AddPicture = ({name}) => {
+  console.log(name , 'name');
+  const [imageUrl, setImageUrl] = useState(null); // Initialize imageUrl as null
+const [text ,setText] = useState('');
+console.log(text,'text');
+
+const handleChange = async (info) => {
+  const file = info.file.originFileObj; // Get the selected file
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const dataURL = event.target.result;
+    setImageUrl(dataURL)
+  };
+  reader.readAsDataURL(file);
+};
+
+const handelUploadImage =() =>{
+  // const file = info.file.originFileObj; // Get the selected file
+
+  // try {
+  //   // Create a FormData object and append the file to it
+  //   const formData = new FormData();
+  //   formData.append('image', file);
+
+  //   console.log(file , 'file');
+
+  //   // Make the API request to your backend
+  //   // const response = await fetch('YOUR_API_ENDPOINT', {
+  //   //   method: 'POST',
+  //   //   body: formData,
+  //   // });
+
+  //   if (response.ok) {
+  //     // Handle the API response here
+  //     const responseData = await response.json();
+  //     console.log('API response:', responseData);
+  //   } else {
+  //     // Handle API request errors
+  //     console.error('API request error:', response.status, response.statusText);
+  //   }
+  // } catch (error) {
+  //   // Handle any other errors that may occur
+  //   console.error('Error uploading file:', error);
+  // }
+}
   return (
     <div className={styles.addPicture}>
     <Row gutter={[16,16]}>
@@ -22,25 +60,26 @@ const AddPicture = () => {
       <div className={styles.uploadImage}>
       <Upload
         name="avatar"
-        listType="picture-card"
-        className="avatar-uploader"
+        // listType="picture-card"
         showUploadList={false}
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        // action='http://localhost:3000'
         // beforeUpload={beforeUpload}
-        // onChange={handleChange}
+        onChange={handleChange}
       >
-        {uploadButton}
-        {/* {imageUrl ? (
-          <img
+        {imageUrl ? (
+    
+           <img
             src={imageUrl}
             alt="avatar"
-            style={{
-              width: '100%',
-            }}
+          className={styles.imgUpload}
+        
           />
+    
         ) : (
-          uploadButton
-        )} */}
+          <div className={styles.addImg}>
+          <img src='/images/plusImg.svg'/>
+        </div>
+        )}
       </Upload>
       </div>
       </Col>
@@ -52,13 +91,19 @@ const AddPicture = () => {
       </Col>
       <Col md={{span:20}}>
       <div className={styles.text}>
-<TextArea />
+<TextArea placeholder='text...' onChange={(e) => setText(e.target.value)} value={text}/>
 
 
       </div>
       </Col>
     </Row>
+
+   
+    <div className={styles.buttonContainer}>
+        <Button onClick={handelUploadImage}>Save</Button>
+      </div>
     </div>
+  
   )
 }
 

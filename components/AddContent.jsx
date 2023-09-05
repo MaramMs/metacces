@@ -6,6 +6,7 @@ import AddSlider from "./AddSlider";
 import AddPicture from "./AddPicture";
 import AddVideo from "./AddVideo";
 const AddContent = ({setAddPage}) => {
+  const [name,setName] = useState('')
   const contentType = [
     {
       id: 1,
@@ -36,11 +37,11 @@ const AddContent = ({setAddPage}) => {
   const renderContentComponent = () => {
     switch (selectedContentType) {
       case "Page":
-        return <AddPage />;
+        return <AddPage name={name}/>;
       case "Slider":
         return <AddSlider />;
       case "Picture":
-        return <AddPicture />;
+        return <AddPicture name={name}/>;
       case "Video":
         return <AddVideo />;
       default:
@@ -53,7 +54,7 @@ const AddContent = ({setAddPage}) => {
       <div className={styles.addContentNav}>
         <div className={styles.nameLabel}>
           <label className={styles.labelInput}>Name</label>
-          <Input className={styles.nameInput} />
+          <Input className={styles.nameInput} onChange={(e)=>setName(e.target.value)} value={name}/>
         </div>
         <div className={styles.contentType}>
           <div className={styles.contentTypeMenu}>

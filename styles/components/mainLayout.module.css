@@ -7,16 +7,16 @@
 }
 .container{
     min-height: 100vh;
-display: flex;
+/* display: flex;
 flex-direction: column;
-justify-content: space-between;
+justify-content: space-between; */
 padding: 16px;
 }
 
 .gradientBorderWrapper {
     padding: 1px;
     width: 70%;
-    height: 70vh;
+    height: 77vh;
     background: linear-gradient(45deg, #07061A,#035A91,#0098E9,#A62FB2, #CF15A5);
     border-radius: 36px;
     margin: auto;
@@ -31,7 +31,7 @@ padding: 16px;
     border-radius: 36px;
     padding: 49px 86px;
     width: 100%;
-    height: 70vh;
+    height: 77vh;
     min-height: 100%;
   
 

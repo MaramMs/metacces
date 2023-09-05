@@ -1,9 +1,10 @@
 import { Button, Input, Radio, Upload, message } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import styles from '../styles/components/footer.module.css'
 import UploadIcon from './UploadIcon';
 import axios from 'axios';
-const AddIcon = ({addIcon,setShowAddIcon}) => {
+const AddIcon =forwardRef(({addIcon,setShowAddIcon,showAddIcon,},ref) => {
+  console.log(ref , 'ref');
   const [value, setValue] = useState();
   const [nameIcon,setNameIcon] = useState('');
   const [image, setImage] = useState();
@@ -51,24 +52,31 @@ const handelAddIcon =async () =>{
   // }
 }
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      // Check if the click event target is not within the component
-      if (event.target && !event.target.closest('.addIcon')) {
-        setShowAddIcon(false); // Call the onClose function to close the component
-      }
-    };
 
-    // Attach the event listener to the document
-    document.addEventListener('click', handleClickOutside);
+useEffect(() => {
+  // Function to handle click events
+  function handleClickOutside(event) {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setShowAddIcon(false);
+    }
+  }
+  
 
-    // Remove the event listener when the component unmounts
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [setShowAddIcon]);
+  // Add the event listener when the component is mounted
+  document.addEventListener("click", handleClickOutside);
+
+  // Clean up the event listener when the component is unmounted
+  return () => {
+    document.removeEventListener("click", handleClickOutside);
+  };
+}, [showAddIcon]);
+
+
+
+
+
   return (
-    <div className={styles.addIcon}>
+    <div className={styles.addIcon} ref={ref}>
   
 <div className={styles.nameLabel}>
    <label className={styles.labelInput}>
@@ -112,6 +120,6 @@ const handelAddIcon =async () =>{
 
     </div>
   )
-}
+})
 
 export default AddIcon

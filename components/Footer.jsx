@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import NavBar from './NavBar'
 import { Button,Radio } from 'antd'
 import styles from '../styles/components/footer.module.css'
@@ -8,6 +8,11 @@ const Footer = () => {
 const [IconsLeft , setIconsLeft] = useState([]);
 const [IconsRight, setIconsRight] = useState([])
   const [showAddIcon, setShowAddIcon] = useState(false);
+
+  const handleClose = ()=>{
+    setShowAddIcon(false)
+  }
+  const componentRef= useRef(null);
 
   const addIcon = (iconData) =>{
     console.log(iconData , 'icon data');
@@ -35,7 +40,8 @@ const [IconsRight, setIconsRight] = useState([])
       <Button className={styles.btnAddIcon} onClick={handleAddIcon}>
         <img src='/images/plus.svg' alt="Add Icon" />
       </Button>
-      {showAddIcon && <AddIcon addIcon={addIcon} setShowAddIcon={setShowAddIcon}/>}
+      {showAddIcon && <AddIcon showAddIcon={showAddIcon}   ref={componentRef}
+ addIcon={addIcon} setShowAddIcon={setShowAddIcon} handleClose={handleClose}/>}
     </div>
 
 

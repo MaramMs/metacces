@@ -4,7 +4,8 @@
     background-color: #fff;
     border-radius: 20px;
     padding: 20px;
-  
+  display: flex;
+  flex-direction: column;
 }
 .addContentNav{
     display: flex;
@@ -19,8 +20,11 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 flex: 1;
+margin-top: 35px;
+
 
 }
+
 .contentTypeMenu{
     display: flex;
     gap: 20px;

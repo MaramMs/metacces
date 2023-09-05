@@ -20,9 +20,9 @@
   height: 80px;
   border-radius: 50%;
   background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .text {
@@ -35,6 +35,12 @@
   background: transparent !important;
   border: none !important;
   min-height: 100%;
+  resize: none !important;
+}
+.text textarea:focus{
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .label {

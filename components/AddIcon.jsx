@@ -1,9 +1,9 @@
-import { Button, Input, Radio, Upload } from 'antd'
-import React, { useState } from 'react'
+import { Button, Input, Radio, Upload, message } from 'antd'
+import React, { useEffect, useState } from 'react'
 import styles from '../styles/components/footer.module.css'
 import UploadIcon from './UploadIcon';
 import axios from 'axios';
-const AddIcon = ({addIcon}) => {
+const AddIcon = ({addIcon,setShowAddIcon}) => {
   const [value, setValue] = useState();
   const [nameIcon,setNameIcon] = useState('');
   const [image, setImage] = useState();
@@ -14,18 +14,19 @@ const AddIcon = ({addIcon}) => {
   };
 
   const onChange = (e) => {
-    console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
   const handelNameIcon = (e) => {
     setNameIcon(e.target.value)
   }
 
-  // const handleImageUpload = (file) => {
-  //   // Handle image upload here, e.g., set the 'image' state
-  //   setImage(file);
-  // };
 const handelAddIcon =async () =>{
+  if (!image || !image.file) {
+    message.error("Please upload an image before saving.");
+    setShowAddIcon(false)
+
+    return; 
+  }
   const iconPosition = value === 1 ? 'right' : 'left';
 
   const iconData = {
@@ -38,7 +39,8 @@ const handelAddIcon =async () =>{
 
   console.log(iconData , 'icon data');
 
-  addIcon(iconData)
+  addIcon(iconData);
+  setShowAddIcon(false)
   // try {
   //   const res = await axios.post('',{
   //     icon: nameIcon,
@@ -49,7 +51,22 @@ const handelAddIcon =async () =>{
   // }
 }
 
-console.log(image , 'image');
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Check if the click event target is not within the component
+      if (event.target && !event.target.closest('.addIcon')) {
+        setShowAddIcon(false); // Call the onClose function to close the component
+      }
+    };
+
+    // Attach the event listener to the document
+    document.addEventListener('click', handleClickOutside);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [setShowAddIcon]);
   return (
     <div className={styles.addIcon}>
   

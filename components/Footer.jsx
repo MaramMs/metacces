@@ -35,7 +35,7 @@ const [IconsRight, setIconsRight] = useState([])
       <Button className={styles.btnAddIcon} onClick={handleAddIcon}>
         <img src='/images/plus.svg' alt="Add Icon" />
       </Button>
-      {showAddIcon && <AddIcon addIcon={addIcon}/>}
+      {showAddIcon && <AddIcon addIcon={addIcon} setShowAddIcon={setShowAddIcon}/>}
     </div>
 
 

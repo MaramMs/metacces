@@ -1,3 +1,4 @@
+'use client'
 import { Button, Input, Radio, Upload, message } from 'antd'
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import styles from '../styles/components/footer.module.css'

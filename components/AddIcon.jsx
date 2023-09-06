@@ -57,24 +57,24 @@ const handelAddIcon =async () =>{
 
 
 
-useEffect(() => {
-  if (typeof window !== 'undefined') {
-    // Function to handle click events
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setShowAddIcon(false);
-      }
-    }
+// useEffect(() => {
+//   if (typeof window !== 'undefined') {
+//     // Function to handle click events
+//     function handleClickOutside(event) {
+//       if (ref.current && !ref.current.contains(event.target)) {
+//         setShowAddIcon(false);
+//       }
+//     }
 
-    // Add the event listener when the component is mounted
-    document.addEventListener("click", handleClickOutside);
+//     // Add the event listener when the component is mounted
+//     document.addEventListener("click", handleClickOutside);
 
-    // Clean up the event listener when the component is unmounted
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }
-}, [showAddIcon]);
+//     // Clean up the event listener when the component is unmounted
+//     return () => {
+//       document.removeEventListener("click", handleClickOutside);
+//     };
+//   }
+// }, [showAddIcon]);
 
 
 

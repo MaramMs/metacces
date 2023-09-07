@@ -1,15 +1,12 @@
 'use client'
-import Image from 'next/image'
 import { useState } from 'react'
 import MainLayout from '../../components/MainLayout'
 
 export default function Home() {
   const [openLayout, setOpenLayout] = useState(false);
   const handleOpenLayout = () =>{
-    console.log('maram');
     setOpenLayout(true)
   }
-  console.log(openLayout);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between  bg-[url('/images/bg.png')] bg-no-repeat bg-cover">
       
